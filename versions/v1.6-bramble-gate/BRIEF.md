@@ -36,7 +36,7 @@ Almost all crew work happened *on* the beast. v1.6 adds a set piece that needs t
 ## Testing without humans
 - `--bot=brambles`: the beast balks about 24 m before the hedge, the bot hacks a gap, and the beast walks through about 22 m past the line.
 - `--cam=brambles`, and the prop line-up (`look_test.tscn -- --props=1`) includes a bramble bush.
-- The autopilot now chops through like a crew. Two full migrations (seeds 42 and 7) both **won on day 4**, and seed 7 spent about 14 s chopping through the hedge. These thistle-heavy seeds still showed 10–12 shakes a run, so the base mite spawn rate was cut by 35% (). That isn't re-measured yet; expect roughly 6–8 shakes on such seeds.
+- The autopilot now chops through like a crew. Two full migrations (seeds 42 and 7) both **won on day 4**, and seed 7 spent about 14 s chopping through the hedge. These thistle-heavy seeds still showed 10–12 shakes a run, so the base mite spawn rate was cut by 35% (`_spawn_mites`). That isn't re-measured yet; expect roughly 6–8 shakes on such seeds.
 
 ## Known gaps
 - **The hedge has no physical collision**, so Tenders walk through bushes. A slow-down or scratch-tumble inside brambles would make it feel thornier.
