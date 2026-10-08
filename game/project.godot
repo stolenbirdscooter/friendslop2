@@ -15,7 +15,13 @@ config/icon="res://icon.svg"
 
 G="*res://src/core/g.gd"
 Sfx="*res://src/audio/sfx.gd"
+Music="*res://src/audio/music.gd"
 Net="*res://src/net/net.gd"
+Voice="*res://src/net/voice.gd"
+
+[audio]
+
+driver/enable_input=true
 
 [display]
 

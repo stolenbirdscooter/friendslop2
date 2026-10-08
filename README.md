@@ -36,6 +36,8 @@ Every asset is procedural: meshes from math, sound from synthesis. The only exce
 | Right mouse (hold) | throw |
 | Q | whistle |
 | F | wave |
+| R (hold) | flop like a sack |
+| T | push-to-talk (optional; open mic by default) |
 | Esc | menu |
 
 While on the lure: A/D swings it left/right and W/S lowers/raises the sweetroot.
@@ -45,3 +47,4 @@ While on the lure: A/D swings it left/right and W/S lowers/raises the sweetroot.
 | Version | Name | Highlights |
 |---|---|---|
 | [v0.1](versions/v0.1-first-steps) | First Steps | The beast walks. Lure steering, feeding, sneezes, gulps, waystones over 6 days, ENet co-op, ink-and-paper look, synthesized audio. |
+| [v0.2](versions/v0.2-chatter-and-critters) | Chatter & Critters | Proximity voice chat with talking mouths. Thistlemites and the wet-dog shake. Five biomes along the route. Beast names and temperaments. Misty days with a spyglass lookout on the cottage roof. Generative folk music. Flop, throw arcs, puff FX, coach hints. |

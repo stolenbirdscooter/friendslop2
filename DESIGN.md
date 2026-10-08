@@ -32,6 +32,13 @@ Each day you have to coax it to the next **Waystone** before sunset, following c
    - one shouts directions from the cottage roof,
    - one is being thrown off the beast.
 5. **Clip-worthy scale.** Seeing a cottage-topped hill wander through a meadow is a screenshot by itself.
+6. **The land is a readable risk map.** Each kind of ground shows its risk at a glance, so steering is a choice:
+   - bright flower meadows mean sneezes,
+   - purple thistle patches mean pests,
+   - groves mean fruit,
+   - meres mean wading,
+   - boulders mean confusion.
+7. **Information asymmetry makes people talk.** On misty days only the lookout on the cottage roof can spot the smoke, and the steerer at the front can't. Proximity voice carries the shouting.
 
 ## What it deliberately is *not*
 
@@ -66,12 +73,23 @@ Each day you have to coax it to the next **Waystone** before sunset, following c
 | Crew | `src/player/player.gd`, `tender_visual.gd` | Owner-authoritative movement. Syncs in beast-local space while aboard |
 | Session | `src/net/net.gd` (autoload `Net`) | ENet host/join, roster, LAN beacon on UDP 24681 |
 | Run logic | `src/game.gd` | Server-authoritative fruit, beast, clock and waystones. Lives at `/root/Main/Game` everywhere so RPC paths match |
-| Audio | `src/audio/sfx.gd` (autoload `Sfx`) | Everything synthesized at startup (about 0.5 s) |
+| Audio | `src/audio/sfx.gd` (autoload `Sfx`), `src/audio/music.gd` (autoload `Music`) | SFX are synthesized at startup. Music is a generative folk ensemble with moods (dawn/travel/tense/night/arrived) and stingers |
+| Voice | `src/net/voice.gd` (autoload `Voice`) | Proximity voice: mic → 16 kHz μ-law → unreliable RPC → AudioStreamGenerator on each Tender. Voice-activity detection, optional push-to-talk |
+| Biomes | `Terrain.BIOMES`, `set_route()` | One biome per leg of the route, blended near waystones. They drive ground colour, tree mix, canopy palette, flowers, thistles and lakes |
+| FX | `src/fx/fx.gd` | CPU-animated MultiMesh of opaque inked puffs |
 | UI | `src/ui/*.gd` | Paper-tag HUD drawn in `_draw` |
+
+## The beast's moods (server state machine)
+
+`IDLE / WALK / EAT / SNEEZE_IN / SNEEZE / SIT / BLOCKED / SHAKE`:
+- **Belly** drains while walking. At 0 the beast sits until fed.
+- **Pollen** comes from flowers and triggers a sneeze.
+- **Itch** comes from thistlemites aboard and triggers a shake.
+- **Temperament** multiplies these. Options: Sneezy, Greedy, Ticklish, Dozy, Stubborn, Nosy.
 
 ## Dev tools
 
 - `tools/check.sh game -- --autostart=solo`: headless boot plus script errors.
 - `tools/shot.sh game res://scenes/main.tscn out.png --autostart=solo --cam=side --walk=1`: a software-rendered screenshot.
-- Bots: `godot --headless --path game -- --autostart=solo --bot=steer|chaos|hop|release` and `--autostart=join --bot=watch`.
+- Bots: `godot --headless --path game -- --autostart=solo --bot=steer|chaos|hop|release|pests|spy` and `--autostart=join --bot=watch`. Add `--leg=N` to start on a later leg.
 - `tools/snapshot.sh vX.Y-slug "Label"`: freezes `game/` into `versions/`.
