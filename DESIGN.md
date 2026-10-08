@@ -85,12 +85,13 @@ Each day you have to coax it to the next **Waystone** before sunset, following c
 | Run logic | `src/game.gd` | Server-authoritative fruit, beast, clock and waystones. Lives at `/root/Main/Game` everywhere so RPC paths match |
 | Audio | `src/audio/sfx.gd` (autoload `Sfx`), `src/audio/music.gd` (autoload `Music`) | SFX are synthesized at startup. Music is a generative folk ensemble with moods (dawn/travel/tense/night/arrived) and stingers |
 | Voice | `src/net/voice.gd` (autoload `Voice`) | Proximity voice: mic → 16 kHz μ-law → unreliable RPC → AudioStreamGenerator on each Tender. Voice-activity detection, optional push-to-talk |
-| Biomes | `Terrain.BIOMES`, `set_route()` | One biome per leg of the route, blended near waystones. They drive ground colour, tree mix, canopy palette, flowers, thistles and lakes |
+| Biomes | `Terrain.BIOMES`, `set_radial()` | Radial bands around the start, ending at each level's waystone ring, so every branch shares them. They drive ground colour, tree mix, canopy palette, flowers, thistles and lakes |
 | FX | `src/fx/fx.gd` | CPU-animated MultiMesh of opaque inked puffs |
 | UI | `src/ui/*.gd` | Paper-tag HUD drawn in `_draw` |
 | Flinger | `Beast._build_flinger`, `Game._request_fling` | Separate `AnimatableBody3D` turntable on the left flank. The server launches props in the bowl, and each client launches its own Tender |
 | Keepsakes / hats | `PropsLib.KEEPSAKES`, `Game._spawn_keepsakes`, `G.unlocked_hats` | Two per leg, off-route. Shelving one in the cottage unlocks a hat (saved in `user://mossback.cfg`) |
 | Field journal | `Game.jot`, `Game.tally`, `Hud._show_end` | Server-written story lines (capped per kind per day) and per-Tender tallies, shown on the end spread with commendations. P saves postcards |
+| Branching roads | `Game._plan_route`, `Game.TRAITS`, `option_ids`, `active_trait` | A 15-node waystone tree. Each fork's road has a character; the crew chooses by steering toward a smoke |
 | Rivers / fords | `Terrain.add_river`, `Beast._deep_ahead` | One seeded river crosses leg 1 or 2. The beast balks at deep water unless enchanted or chasing food, and stays brave for 25 s after wading |
 | Gales | `Game._gust`, `Player.on_gust` | Weather roll: mist 30% / gale 25%. Gusts come every 16–28 s with 2 s of telegraph |
 | Magpies | `src/props/magpie.gd`, `Game` magpie section | Server-flown thieves. Loot goes to tree nests (`held_by` < 0). Whistle, bonk or shake the tree to get it back |
