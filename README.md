@@ -38,6 +38,7 @@ Every asset is procedural: meshes from math, sound from synthesis. The only exce
 | F | wave |
 | R (hold) | flop like a sack |
 | 1 – 8 | play your kalimba (the Mossback loves a tune) |
+| P | save a framed postcard of the view (to `user://postcards/`) |
 | T | push-to-talk (optional; open mic by default) |
 | Esc | menu |
 
@@ -53,3 +54,4 @@ Inside the cottage: E tries on another hat.
 | [v0.2](versions/v0.2-chatter-and-critters) | Chatter & Critters | Proximity voice chat with talking mouths. Thistlemites and the wet-dog shake. Five biomes along the route. Beast names and temperaments. Misty days with a spyglass lookout on the cottage roof. Generative folk music. Flop, throw arcs, puff FX, coach hints. |
 | [v0.3](versions/v0.3-songs-and-slingshots) | Songs & Slingshots | The flinger: a spoon catapult on the beast's back for fruit, mites and friends. Keepsakes off the path unlock hats that persist between runs. Kalimba serenades that enchant the beast. Waystone arrival spectacle. Fixed a mesh-merge bug that had been hiding flowers, pines and tree fruit since v0.1. |
 | [v0.4](versions/v0.4-gales-and-magpies) | Gales & Magpies | River fords the beast won't wade without a tune or a snack. Gale days with telegraphed gusts (hold R to flop flat). Magpies that steal hats, keepsakes and fruit and nest them in trees: whistle, bonk them, or shake the nest tree. |
+| [v0.5](versions/v0.5-the-field-journal) | The Field Journal | The run writes its own journal (who got eaten, who sang it across the river, who the magpies robbed), shown as an end-of-run spread with per-player commendations. P saves framed postcards. New synthesized sounds for magpies, gusts, the flinger, splashes and hats. |

@@ -90,6 +90,7 @@ Each day you have to coax it to the next **Waystone** before sunset, following c
 | UI | `src/ui/*.gd` | Paper-tag HUD drawn in `_draw` |
 | Flinger | `Beast._build_flinger`, `Game._request_fling` | Separate `AnimatableBody3D` turntable on the left flank. The server launches props in the bowl, and each client launches its own Tender |
 | Keepsakes / hats | `PropsLib.KEEPSAKES`, `Game._spawn_keepsakes`, `G.unlocked_hats` | Two per leg, off-route. Shelving one in the cottage unlocks a hat (saved in `user://mossback.cfg`) |
+| Field journal | , ,  | Server-written story lines (capped per kind per day) and per-Tender tallies, shown on the end spread with commendations. P saves postcards |
 | Rivers / fords | `Terrain.add_river`, `Beast._deep_ahead` | One seeded river crosses leg 1 or 2. The beast balks at deep water unless enchanted or chasing food, and stays brave for 25 s after wading |
 | Gales | `Game._gust`, `Player.on_gust` | Weather roll: mist 30% / gale 25%. Gusts come every 16–28 s with 2 s of telegraph |
 | Magpies | `src/props/magpie.gd`, `Game` magpie section | Server-flown thieves. Loot goes to tree nests (`held_by` < 0). Whistle, bonk or shake the tree to get it back |
