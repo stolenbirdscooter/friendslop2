@@ -40,6 +40,9 @@ Each day you have to coax it to the next **Waystone** before sunset, following c
    - boulders mean confusion.
 7. **Information asymmetry makes people talk.** On misty days only the lookout on the cottage roof can spot the smoke, and the steerer at the front can't. Proximity voice carries the shouting.
 
+8. **Something to do with your hands at every moment.** Steer, forage, feed, de-mite, look out, man the flinger, play the kalimba. Every job is useful but none is mandatory, so a crew of 1 or 8 both work.
+9. **Reasons to leave and reasons to come back.** Keepsakes glint far off the path. They unlock hats, but only if you get them home to the cottage, which keeps walking without you.
+
 ## What it deliberately is *not*
 
 - No monsters, horror, or dark facilities (Lethal Company / R.E.P.O. / Content Warning).
@@ -78,6 +81,9 @@ Each day you have to coax it to the next **Waystone** before sunset, following c
 | Biomes | `Terrain.BIOMES`, `set_route()` | One biome per leg of the route, blended near waystones. They drive ground colour, tree mix, canopy palette, flowers, thistles and lakes |
 | FX | `src/fx/fx.gd` | CPU-animated MultiMesh of opaque inked puffs |
 | UI | `src/ui/*.gd` | Paper-tag HUD drawn in `_draw` |
+| Flinger | `Beast._build_flinger`, `Game._request_fling` | Separate `AnimatableBody3D` turntable on the left flank. The server launches props in the bowl, and each client launches its own Tender |
+| Keepsakes / hats | `PropsLib.KEEPSAKES`, `Game._spawn_keepsakes`, `G.unlocked_hats` | Two per leg, off-route. Shelving one in the cottage unlocks a hat (saved in `user://mossback.cfg`) |
+| Serenade | `Game._note`, `Beast.hear_note`, `Music.player_scale` | Crew notes in the score's key. The server sums them into `Beast.serenade`, and above 0.55 the beast is enchanted |
 
 ## The beast's moods (server state machine)
 
@@ -85,11 +91,14 @@ Each day you have to coax it to the next **Waystone** before sunset, following c
 - **Belly** drains while walking. At 0 the beast sits until fed.
 - **Pollen** comes from flowers and triggers a sneeze.
 - **Itch** comes from thistlemites aboard and triggers a shake.
+- **Serenade** comes from crew kalimbas near its head. It slows hunger and itch, makes it trot, and wakes it from naps.
 - **Temperament** multiplies these. Options: Sneezy, Greedy, Ticklish, Dozy, Stubborn, Nosy.
 
 ## Dev tools
 
 - `tools/check.sh game -- --autostart=solo`: headless boot plus script errors.
 - `tools/shot.sh game res://scenes/main.tscn out.png --autostart=solo --cam=side --walk=1`: a software-rendered screenshot.
-- Bots: `godot --headless --path game -- --autostart=solo --bot=steer|chaos|hop|release|pests|spy` and `--autostart=join --bot=watch`. Add `--leg=N` to start on a later leg.
+- Bots: `godot --headless --path game -- --autostart=solo --bot=steer|chaos|hop|release|pests|spy|fling|keepsake|serenade` and `--autostart=join --bot=watch`. Add `--leg=N` to start on a later leg.
+- Look-dev: `--cam=flinger|hut|side|front|far|player` in the main scene. Use `res://scenes/look_test.tscn -- --props=1` for a prop line-up.
+- `Geo.merge` indexes non-indexed parts before `append_from`. Without that, mixing primitive meshes with SurfaceTool meshes silently drops triangles. This bug is present in v0.1–v0.2.
 - `tools/snapshot.sh vX.Y-slug "Label"`: freezes `game/` into `versions/`.

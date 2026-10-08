@@ -614,10 +614,11 @@ func _build_bank() -> void:
 		_normalize(mbuf, SRF, 0.0, 0.2, 0.10, 0.9)
 		_add_sample("plm_%d" % r, mbuf, SR, false, pm["hz"])
 	for r in FLT_ROOTS:
+		var raw: PackedFloat32Array = _synth_flute(r, FLT_LEN_L, _noise)
 		var lens: PackedFloat32Array = [FLT_LEN_S, FLT_LEN_M, FLT_LEN_L]
 		var tags: PackedStringArray = ["S", "M", "L"]
 		for li in lens.size():
-			var fb: PackedFloat32Array = _synth_flute(r, lens[li], _noise)
+			var fb: PackedFloat32Array = _flute_cut(raw, lens[li])
 			_normalize(fb, SRL, 0.14, minf(0.45, lens[li] * 0.6), 0.10, 0.9)
 			_add_sample("flt_%d_%s" % [r, tags[li]], fb, SR_LO, false, Theory.hz(float(r)))
 	for di in DRN_ROOTS.size():
@@ -809,8 +810,19 @@ static func _synth_pluck(root: int, dur: float, t60: float, bright: float, noise
 	return {"buf": out, "hz": actual}
 
 
-## Breathy wooden flute at SR_LO: sine + soft 2nd/3rd, delayed vibrato, band-passed
-## breath noise and a little chiff on the attack. Release is baked in.
+## Shorter flute lengths are cut from the long render with their own release.
+static func _flute_cut(raw: PackedFloat32Array, dur: float) -> PackedFloat32Array:
+	var n: int = mini(int(dur * SRL), raw.size())
+	var out: PackedFloat32Array = raw.slice(0, n)
+	var rn: int = int(minf(0.3, dur * 0.35) * SRL)
+	for i in rn:
+		var y: float = float(i) / float(rn)
+		out[n - 1 - i] *= y * y * (3.0 - 2.0 * y)
+	return out
+
+
+## Breathy wooden flute at SR_LO (attack only; see _flute_cut): sine + soft 2nd/3rd,
+## delayed vibrato, band-passed breath noise and a little chiff on the attack.
 static func _synth_flute(root: int, dur: float, noise: PackedFloat32Array) -> PackedFloat32Array:
 	var n: int = int(dur * SRL)
 	var out: PackedFloat32Array = PackedFloat32Array()
@@ -818,7 +830,6 @@ static func _synth_flute(root: int, dur: float, noise: PackedFloat32Array) -> Pa
 	var f0: float = Theory.hz(float(root))
 	var inv: float = 1.0 / SRL
 	var att: float = 0.085
-	var rel: float = minf(0.3, dur * 0.35)
 	var ph: float = 0.0
 	var vph: float = 0.0
 	var vstep: float = TAU * 5.0 * inv
@@ -832,10 +843,6 @@ static func _synth_flute(root: int, dur: float, noise: PackedFloat32Array) -> Pa
 		if t < att:
 			var x: float = t / att
 			env = x * x * (3.0 - 2.0 * x)
-		var tr: float = dur - t
-		if tr < rel:
-			var y: float = tr / rel
-			env *= y * y * (3.0 - 2.0 * y)
 		var vib: float = clampf((t - 0.22) / 0.5, 0.0, 1.0)
 		vph += vstep
 		var vs: float = sin(vph)
