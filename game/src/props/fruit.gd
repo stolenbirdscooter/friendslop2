@@ -6,6 +6,12 @@ const KINDS := {
 	"plumbob": {"value": 12.0, "mass": 1.0, "radius": 0.3, "heavy": false},
 	"gourdle": {"value": 30.0, "mass": 4.0, "radius": 0.45, "heavy": true},
 	"mite": {"value": 0.0, "mass": 0.5, "radius": 0.27, "heavy": false, "pest": true},
+	"ks_teacup": {"value": 0.0, "mass": 0.6, "radius": 0.3, "heavy": false, "keepsake": true},
+	"ks_acorn": {"value": 0.0, "mass": 0.6, "radius": 0.3, "heavy": false, "keepsake": true},
+	"ks_crown": {"value": 0.0, "mass": 0.5, "radius": 0.3, "heavy": false, "keepsake": true},
+	"ks_feather": {"value": 0.0, "mass": 0.3, "radius": 0.3, "heavy": false, "keepsake": true},
+	"ks_shell": {"value": 0.0, "mass": 0.6, "radius": 0.3, "heavy": false, "keepsake": true},
+	"ks_lampshade": {"value": 0.0, "mass": 0.5, "radius": 0.33, "heavy": false, "keepsake": true},
 }
 
 var id := 0
@@ -18,6 +24,7 @@ var _target_rot := Quaternion.IDENTITY
 var _last_bonk := 0.0
 var server_side := true
 var pest := false
+var keepsake := false
 var game: Node
 var on_beast := false
 var ground_t := 0.0
@@ -37,6 +44,7 @@ func setup(p_id: int, p_kind: String, is_server: bool) -> void:
 	value = k.value
 	heavy = k.heavy
 	pest = k.get("pest", false)
+	keepsake = k.get("keepsake", false)
 	mass = k.mass
 	collision_layer = G.PROP_LAYER
 	collision_mask = G.WORLD_LAYER | G.BEAST_LAYER | G.PROP_LAYER | G.PLAYER_LAYER
@@ -45,7 +53,7 @@ func setup(p_id: int, p_kind: String, is_server: bool) -> void:
 	sp.radius = k.radius
 	cs.shape = sp
 	add_child(cs)
-	var mi := Mats.mesh_instance(PropsLib.get_mesh(kind))
+	var mi := Mats.mesh_instance(PropsLib.get_mesh(kind), Mats.glow(Color.WHITE, 0.3) if keepsake else null)
 	add_child(mi)
 	_mesh = mi
 	var pm := PhysicsMaterial.new()

@@ -21,6 +21,8 @@ static func get_mesh(key: String) -> Mesh:
 			m = _plumbob()
 		"mite":
 			m = _mite()
+		"ks_teacup", "ks_acorn", "ks_crown", "ks_feather", "ks_shell", "ks_lampshade":
+			m = keepsake_mesh(parts[0])
 		"thistle":
 			m = _thistle_clump()
 		"gourdle":
@@ -271,3 +273,96 @@ static func _thistle_clump() -> Mesh:
 			var leaf := Geo.blob(Vector3(0.18, 0.02, 0.05), G.MOSS_DARK, 0.3, k * 3 + l, 3, 6)
 			parts.append([leaf, Transform3D(Basis(Vector3.UP, rng.randf() * TAU), p + Vector3(0, h * (0.3 + l * 0.25), 0))])
 	return Geo.merge(parts)
+
+# ---------------------------------------------------------------- keepsakes (they double as hats)
+const KEEPSAKES := {
+	"ks_teacup": {"name": "a chipped teacup", "hat": "teacup"},
+	"ks_acorn": {"name": "a giant acorn", "hat": "acorn"},
+	"ks_crown": {"name": "a paper crown", "hat": "crown"},
+	"ks_feather": {"name": "a heron feather", "hat": "feather"},
+	"ks_shell": {"name": "an empty snail shell", "hat": "shell"},
+	"ks_lampshade": {"name": "a lampshade", "hat": "lampshade"},
+}
+
+static func keepsake_mesh(kind: String) -> Mesh:
+	var parts: Array = []
+	match kind:
+		"ks_teacup":
+			parts.append([Geo.lathe(PackedVector2Array([Vector2(0.0, 0.0), Vector2(0.16, 0.0), Vector2(0.22, 0.08), Vector2(0.26, 0.24), Vector2(0.24, 0.26), Vector2(0.2, 0.1), Vector2(0.0, 0.06)]), 14, G.PAPER), Transform3D()])
+			parts.append([Geo.lathe(PackedVector2Array([Vector2(0.255, 0.17), Vector2(0.262, 0.21)]), 14, G.ROSE), Transform3D()])
+			var hp := PackedVector3Array()
+			var hr := PackedFloat32Array()
+			for k in 7:
+				var a := lerpf(-1.4, 1.4, k / 6.0)
+				hp.append(Vector3(0.25 + cos(a) * 0.08, 0.14 + sin(a) * 0.08, 0))
+				hr.append(0.022)
+			parts.append([Geo.tube(hp, hr, G.PAPER, 5), Transform3D()])
+			parts.append([Geo.lathe(PackedVector2Array([Vector2(0.0, -0.02), Vector2(0.34, -0.02), Vector2(0.36, 0.01), Vector2(0.0, 0.0)]), 16, G.SKY.lightened(0.3)), Transform3D()])
+		"ks_acorn":
+			parts.append([Geo.blob(Vector3(0.2, 0.24, 0.2), G.WOOD_LIGHT, 0.04, 81, 8, 12), Transform3D(Basis(), Vector3(0, 0.0, 0))])
+			parts.append([Geo.lathe(PackedVector2Array([Vector2(0.0, 0.06), Vector2(0.23, 0.08), Vector2(0.25, 0.16), Vector2(0.18, 0.24), Vector2(0.0, 0.26)]), 12, G.BARK, Vector2.ONE, 0.12, 82), Transform3D()])
+			parts.append([Geo.cylinder(0.02, 0.03, 0.1, G.BARK.darkened(0.2), 4), Transform3D(Basis(Vector3.FORWARD, 0.3), Vector3(0.01, 0.3, 0))])
+		"ks_crown":
+			parts.append([Geo.lathe(PackedVector2Array([Vector2(0.24, 0.0), Vector2(0.25, 0.12)]), 14, G.BUTTER), Transform3D()])
+			for k in 7:
+				var a := TAU * k / 7.0
+				var spike := Geo.lathe(PackedVector2Array([Vector2(0.06, 0.0), Vector2(0.0, 0.14)]), 4, G.BUTTER)
+				parts.append([spike, Transform3D(Basis(), Vector3(cos(a) * 0.235, 0.11, sin(a) * 0.235))])
+				parts.append([Geo.sphere(0.025, [G.ROSE, G.TEAL, G.TERRACOTTA][k % 3], 5, 4), Transform3D(Basis(), Vector3(cos(a) * 0.255, 0.05, sin(a) * 0.255))])
+		"ks_feather":
+			var pts := PackedVector3Array()
+			var rad := PackedFloat32Array()
+			for k in 8:
+				var t := k / 7.0
+				pts.append(Vector3(0, t * 0.75, sin(t * 2.4) * 0.12))
+				rad.append(sin(t * PI) * 0.07 + 0.01)
+			parts.append([Geo.tube(pts, rad, G.SKY.darkened(0.15), 6), Transform3D(Basis().scaled(Vector3(1.0, 1.0, 0.3)))])
+			parts.append([Geo.cylinder(0.008, 0.012, 0.85, G.PAPER, 4), Transform3D(Basis(), Vector3(0, 0.38, 0.05))])
+		"ks_shell":
+			for k in 9:
+				var t := k / 8.0
+				var a := t * TAU * 1.5
+				var r := lerpf(0.2, 0.05, t)
+				parts.append([Geo.sphere(r, G.TERRACOTTA if k % 2 == 0 else G.PAPER_DARK, 8, 6), Transform3D(Basis(), Vector3(cos(a) * (0.2 - t * 0.15), 0.12 + t * 0.12, sin(a) * (0.2 - t * 0.15)))])
+		"ks_lampshade":
+			parts.append([Geo.lathe(PackedVector2Array([Vector2(0.32, 0.0), Vector2(0.18, 0.3), Vector2(0.17, 0.31)]), 14, G.MARIGOLD), Transform3D()])
+			for k in 14:
+				var a := TAU * k / 14.0
+				parts.append([Geo.sphere(0.03, G.TERRACOTTA, 4, 3), Transform3D(Basis(), Vector3(cos(a) * 0.32, -0.04, sin(a) * 0.32))])
+	return Geo.merge(parts)
+
+static func flinger_parts() -> Dictionary:
+	# a giant wooden spoon on a turntable: the bowl sits on the yaw axis
+	var base := Geo.merge([
+		[Geo.cylinder(1.35, 1.5, 0.35, G.WOOD, 12), Transform3D(Basis(), Vector3(0, 0.15, 0))],
+		[Geo.box(Vector3(0.25, 1.0, 0.25), G.BARK), Transform3D(Basis(), Vector3(-0.9, 0.7, -0.9))],
+		[Geo.box(Vector3(0.25, 1.0, 0.25), G.BARK), Transform3D(Basis(), Vector3(0.9, 0.7, -0.9))],
+		[Geo.cylinder(0.1, 0.1, 2.0, G.BARK, 6), Transform3D(Basis(Vector3.FORWARD, PI * 0.5), Vector3(0, 1.1, -0.9))],
+	])
+	var bowl := Geo.lathe(PackedVector2Array([Vector2(0.0, 0.0), Vector2(0.6, 0.04), Vector2(0.95, 0.25), Vector2(1.1, 0.55), Vector2(1.0, 0.58), Vector2(0.85, 0.3), Vector2(0.5, 0.12), Vector2(0.0, 0.1)]), 16, G.WOOD_LIGHT)
+	var handle := Geo.merge([
+		[Geo.box(Vector3(0.3, 0.2, 3.0), G.WOOD_LIGHT), Transform3D(Basis(Vector3.RIGHT, 0.3), Vector3(0, 0.7, 2.3))],
+		[Geo.box(Vector3(0.7, 0.5, 0.5), G.STONE), Transform3D(Basis(), Vector3(0, 1.2, 3.8))],
+		[Geo.cylinder(0.08, 0.08, 0.9, G.TERRACOTTA, 6), Transform3D(Basis(Vector3.FORWARD, PI * 0.5), Vector3(0, 1.45, 3.8))],
+	])
+	return {"base": base, "bowl": bowl, "handle": handle}
+
+static func bowl_collision() -> ConcavePolygonShape3D:
+	var prof := [Vector2(0.0, 0.1), Vector2(0.5, 0.12), Vector2(0.85, 0.3), Vector2(1.0, 0.58)]
+	var faces := PackedVector3Array()
+	var segs := 12
+	for i in prof.size() - 1:
+		for s in segs:
+			var a0 := TAU * s / segs
+			var a1 := TAU * (s + 1) / segs
+			var p0: Vector2 = prof[i]
+			var p1: Vector2 = prof[i + 1]
+			var v00 := Vector3(cos(a0) * p0.x, p0.y, sin(a0) * p0.x)
+			var v01 := Vector3(cos(a1) * p0.x, p0.y, sin(a1) * p0.x)
+			var v10 := Vector3(cos(a0) * p1.x, p1.y, sin(a0) * p1.x)
+			var v11 := Vector3(cos(a1) * p1.x, p1.y, sin(a1) * p1.x)
+			faces.append_array([v00, v10, v11, v00, v11, v01])
+	var sh := ConcavePolygonShape3D.new()
+	sh.set_faces(faces)
+	sh.backface_collision = true
+	return sh
