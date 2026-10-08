@@ -39,11 +39,12 @@ Every asset is procedural: meshes from math, sound from synthesis. The only exce
 | R (hold) | flop like a sack |
 | 1 – 8 | play your kalimba (the Mossback loves a tune) |
 | P | save a framed postcard of the view (to `user://postcards/`) |
+| M / Tab | unfold the crew's map: roads, smokes, the trail so far and where things happened |
 | G / middle mouse | ping what you're looking at |
 | T | push-to-talk (optional; open mic by default) |
 | Esc | menu |
 
-On a gamepad: left stick moves, right stick looks, A hops, X uses, Y whistles, B flops, RT/RB grab, LT/LB throw, the D-pad plays four kalimba notes, Back takes a postcard.
+On a gamepad: left stick moves, right stick looks, A hops, X uses, Y whistles, B flops, RT/RB grab, LT/LB throw, the D-pad plays four kalimba notes, Back unfolds the map (postcards are in the pause menu).
 
 While on the lure: A/D swings it left/right and W/S lowers/raises the sweetroot.
 At the flinger: mouse or A/D aims, hold LMB to wind it up, release to fling whatever is in the bowl (including friends).
@@ -69,3 +70,4 @@ Inside the cottage: E tries on another hat.
 | [v1.4](versions/v1.4-first-snow) | First Snow | In the Wintering Hollow, snow settles on the beast's back and the cottage roof. Tenders stuck under the belly get shuffled out. |
 | [v1.5](versions/v1.5-wintering) | Wintering | A proper ending: the beast lies down, tucks its head in and sleeps under the snow while every camera drifts out for a last look, then the journal page arrives. |
 | [v1.6](versions/v1.6-bramble-gate) | Bramble Gate | The last leg is barred by a bramble hedge the beast won't push through. Hop off, hack a beast-wide gap and scramble back aboard as it squeezes past. Fewer thistlemites. |
+| [v1.7](versions/v1.7-the-wanderers-map) | The Wanderer's Map | A hand-drawn map of the migration: watercolour biomes, inked lakes and woods, every road named, the beast's real trail and marks where the journal's moments happened. Unfold it any time (M); at the end it inks itself and can be kept as a PNG. |

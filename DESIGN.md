@@ -98,6 +98,7 @@ Each day you have to coax it to the next **Waystone** before sunset, following c
 | The lost Mosslet | `src/props/mosslet.gd`, `Game._maybe_spawn_calf` | A seeded calf near one leg's start; a tune or whistle makes it follow; once home it trots alongside |
 | Rope ladders | `Beast._build_ladders`, `Player.St.CLIMB`, `Game._request_ladder` | Lowered from the back for 40 s, climbed from the ground; rescues are credited |
 | Bramble gate | `Game._build_brambles`, `Beast.thorns_check` | An arc hedge on the last ring. The beast refuses thorns outright; the crew hacks a gap (E, 4 whacks a bush) |
+| Route map | `RouteMap`, `Game.trail`, `Terrain.clone_for_thread` | Field-guide map drawn in `_draw`; water/woods sampled on a worker thread; journal entries carry positions for marks |
 | Rivers / fords | `Terrain.add_river`, `Beast._deep_ahead` | One seeded river crosses leg 1 or 2. The beast balks at deep water unless enchanted or chasing food, and stays brave for 25 s after wading |
 | Gales | `Game._gust`, `Player.on_gust` | Weather roll: mist 30% / gale 25%. Gusts come every 16–28 s with 2 s of telegraph |
 | Magpies | `src/props/magpie.gd`, `Game` magpie section | Server-flown thieves. Loot goes to tree nests (`held_by` < 0). Whistle, bonk or shake the tree to get it back |
