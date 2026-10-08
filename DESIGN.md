@@ -94,6 +94,8 @@ Each day you have to coax it to the next **Waystone** before sunset, following c
 | Branching roads | `Game._plan_route`, `Game.TRAITS`, `option_ids`, `active_trait` | A 15-node waystone tree. Each fork's road has a character; the crew chooses by steering toward a smoke |
 | The favourite | `Beast.befriend`, `Game.tally`, `Game._tick_favourite` | Kindness adds affection. The favourite gets glances, overriding whistles and nuzzle-boops |
 | Ambient weather | `src/fx/ambient.gd` | Per-biome GPU particles around the camera (un-inked motes), plus a global `gale` shader uniform that bends foliage |
+| Pings | `Player._ping`, `Game._ping`, `Hud._draw_pings` | Raycast with contextual labels; crew-coloured markers pinned to the screen edge when off-screen |
+| The lost Mosslet | `src/props/mosslet.gd`, `Game._maybe_spawn_calf` | A seeded calf near one leg's start; a tune or whistle makes it follow; once home it trots alongside |
 | Rivers / fords | `Terrain.add_river`, `Beast._deep_ahead` | One seeded river crosses leg 1 or 2. The beast balks at deep water unless enchanted or chasing food, and stays brave for 25 s after wading |
 | Gales | `Game._gust`, `Player.on_gust` | Weather roll: mist 30% / gale 25%. Gusts come every 16–28 s with 2 s of telegraph |
 | Magpies | `src/props/magpie.gd`, `Game` magpie section | Server-flown thieves. Loot goes to tree nests (`held_by` < 0). Whistle, bonk or shake the tree to get it back |

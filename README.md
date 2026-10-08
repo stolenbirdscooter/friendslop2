@@ -39,6 +39,7 @@ Every asset is procedural: meshes from math, sound from synthesis. The only exce
 | R (hold) | flop like a sack |
 | 1 – 8 | play your kalimba (the Mossback loves a tune) |
 | P | save a framed postcard of the view (to `user://postcards/`) |
+| G / middle mouse | ping what you're looking at |
 | T | push-to-talk (optional; open mic by default) |
 | Esc | menu |
 
@@ -60,3 +61,4 @@ Inside the cottage: E tries on another hat.
 | [v0.6](versions/v0.6-crossroads) | Crossroads | The route branches: past the first waystone every leg offers two smokes with different roads (Windward Ridge, Magpie Woods, Thistle Moor, Long Meadow). Steer for the one you want. Radial biomes and arc rivers that work on every branch. Volume sliders. |
 | [v0.7](versions/v0.7-the-favourite) | The Favourite | The beast picks a favourite Tender from who treats it kindly. It watches them, comes when they whistle (even against the lure) and nuzzle-boops them onto its back. Rosette and "Teacher's Pet" commendation. Full gamepad movement. |
 | [v0.8](versions/v0.8-weathering) | Weathering | You can see each biome's weather: pollen, seed fluff, leaf flurries, cut-paper snow in the Wintering Hollow, and fireflies at dusk. Gusts bend trees and grass. Smoother frame times. Snapshot export verified. |
+| [v0.9](versions/v0.9-calls-and-calves) | Calls & Calves | Context pings (G / middle mouse): point at fruit, keepsakes, magpies, trees or ground for the whole crew. A lost Mosslet calf bleats off one leg's path; coax it home with a tune or whistle and it trots alongside for good. |
