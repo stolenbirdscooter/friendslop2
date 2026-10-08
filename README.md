@@ -67,3 +67,4 @@ Inside the cottage: E tries on another hat.
 | [v1.2](versions/v1.2-back-aboard) | Back Aboard | The tail is now a smooth ramp that runs into the grass, so falling off is no longer a long detour; reboarding a walking beast takes 5–11 s. Fuzz crews (solo and co-op) hammered the game for 15 minutes each with zero errors. |
 | [v1.3](versions/v1.3-rope-and-rescue) | Rope & Rescue | Rope ladders on both flanks: someone aboard lowers one (E at the post) so a stranded friend can climb back up, and the journal remembers who saved whom. Fixed gaps in the spyglass eyepiece mask. |
 | [v1.4](versions/v1.4-first-snow) | First Snow | In the Wintering Hollow, snow settles on the beast's back and the cottage roof. Tenders stuck under the belly get shuffled out. |
+| [v1.5](versions/v1.5-wintering) | Wintering | A proper ending: the beast lies down, tucks its head in and sleeps under the snow while every camera drifts out for a last look, then the journal page arrives. |
