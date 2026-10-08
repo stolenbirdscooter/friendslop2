@@ -68,3 +68,4 @@ Inside the cottage: E tries on another hat.
 | [v1.3](versions/v1.3-rope-and-rescue) | Rope & Rescue | Rope ladders on both flanks: someone aboard lowers one (E at the post) so a stranded friend can climb back up, and the journal remembers who saved whom. Fixed gaps in the spyglass eyepiece mask. |
 | [v1.4](versions/v1.4-first-snow) | First Snow | In the Wintering Hollow, snow settles on the beast's back and the cottage roof. Tenders stuck under the belly get shuffled out. |
 | [v1.5](versions/v1.5-wintering) | Wintering | A proper ending: the beast lies down, tucks its head in and sleeps under the snow while every camera drifts out for a last look, then the journal page arrives. |
+| [v1.6](versions/v1.6-bramble-gate) | Bramble Gate | The last leg is barred by a bramble hedge the beast won't push through. Hop off, hack a beast-wide gap and scramble back aboard as it squeezes past. Fewer thistlemites. |
