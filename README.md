@@ -34,7 +34,7 @@ Every asset is procedural: meshes from math, sound from synthesis. The only exce
 | E | use (take the lure, shake a tree) |
 | Left mouse | pick up / drop |
 | Right mouse (hold) | throw |
-| Q | whistle |
+| Q | whistle (also shoos magpies) |
 | F | wave |
 | R (hold) | flop like a sack |
 | 1 – 8 | play your kalimba (the Mossback loves a tune) |
@@ -52,3 +52,4 @@ Inside the cottage: E tries on another hat.
 | [v0.1](versions/v0.1-first-steps) | First Steps | The beast walks. Lure steering, feeding, sneezes, gulps, waystones over 6 days, ENet co-op, ink-and-paper look, synthesized audio. |
 | [v0.2](versions/v0.2-chatter-and-critters) | Chatter & Critters | Proximity voice chat with talking mouths. Thistlemites and the wet-dog shake. Five biomes along the route. Beast names and temperaments. Misty days with a spyglass lookout on the cottage roof. Generative folk music. Flop, throw arcs, puff FX, coach hints. |
 | [v0.3](versions/v0.3-songs-and-slingshots) | Songs & Slingshots | The flinger: a spoon catapult on the beast's back for fruit, mites and friends. Keepsakes off the path unlock hats that persist between runs. Kalimba serenades that enchant the beast. Waystone arrival spectacle. Fixed a mesh-merge bug that had been hiding flowers, pines and tree fruit since v0.1. |
+| [v0.4](versions/v0.4-gales-and-magpies) | Gales & Magpies | River fords the beast won't wade without a tune or a snack. Gale days with telegraphed gusts (hold R to flop flat). Magpies that steal hats, keepsakes and fruit and nest them in trees: whistle, bonk them, or shake the nest tree. |
