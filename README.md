@@ -42,6 +42,8 @@ Every asset is procedural: meshes from math, sound from synthesis. The only exce
 | T | push-to-talk (optional; open mic by default) |
 | Esc | menu |
 
+On a gamepad: left stick moves, right stick looks, A hops, X uses, Y whistles, B flops, RT/RB grab, LT/LB throw, the D-pad plays four kalimba notes, Back takes a postcard.
+
 While on the lure: A/D swings it left/right and W/S lowers/raises the sweetroot.
 At the flinger: mouse or A/D aims, hold LMB to wind it up, release to fling whatever is in the bowl (including friends).
 Inside the cottage: E tries on another hat.
@@ -56,3 +58,4 @@ Inside the cottage: E tries on another hat.
 | [v0.4](versions/v0.4-gales-and-magpies) | Gales & Magpies | River fords the beast won't wade without a tune or a snack. Gale days with telegraphed gusts (hold R to flop flat). Magpies that steal hats, keepsakes and fruit and nest them in trees: whistle, bonk them, or shake the nest tree. |
 | [v0.5](versions/v0.5-the-field-journal) | The Field Journal | The run writes its own journal (who got eaten, who sang it across the river, who the magpies robbed), shown as an end-of-run spread with per-player commendations. P saves framed postcards. New synthesized sounds for magpies, gusts, the flinger, splashes and hats. |
 | [v0.6](versions/v0.6-crossroads) | Crossroads | The route branches: past the first waystone every leg offers two smokes with different roads (Windward Ridge, Magpie Woods, Thistle Moor, Long Meadow). Steer for the one you want. Radial biomes and arc rivers that work on every branch. Volume sliders. |
+| [v0.7](versions/v0.7-the-favourite) | The Favourite | The beast picks a favourite Tender from who treats it kindly. It watches them, comes when they whistle (even against the lure) and nuzzle-boops them onto its back. Rosette and "Teacher's Pet" commendation. Full gamepad movement. |
