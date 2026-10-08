@@ -5,7 +5,7 @@ config_version=5
 
 [application]
 
-config/name="Mossback"
+config/name="Mossback v0.8 — Weathering"
 config/description="Tiny caretakers, one enormous wandering beast."
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
