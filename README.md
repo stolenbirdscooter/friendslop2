@@ -71,3 +71,4 @@ Inside the cottage: E tries on another hat.
 | [v1.5](versions/v1.5-wintering) | Wintering | A proper ending: the beast lies down, tucks its head in and sleeps under the snow while every camera drifts out for a last look, then the journal page arrives. |
 | [v1.6](versions/v1.6-bramble-gate) | Bramble Gate | The last leg is barred by a bramble hedge the beast won't push through. Hop off, hack a beast-wide gap and scramble back aboard as it squeezes past. Fewer thistlemites. |
 | [v1.7](versions/v1.7-the-wanderers-map) | The Wanderer's Map | A hand-drawn map of the migration: watercolour biomes, inked lakes and woods, every road named, the beast's real trail and marks where the journal's moments happened. Unfold it any time (M); at the end it inks itself and can be kept as a PNG. |
+| [v1.8](versions/v1.8-map-reader) | Map Reader | Whoever has the map open holds up a comically oversized paper map in-world, so the crew can see who's navigating. |
